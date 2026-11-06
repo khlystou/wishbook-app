@@ -638,7 +638,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="app-shell">
+      <div className="app-shell ym-hide-content">
         <header className="topbar">
           <div className="brand"><span className="brand-mark"><Star size={19} fill="currentColor" strokeWidth={1.5} /></span><span>Мастер желаний</span></div>
           <div className="topbar-right"><span className="autosave"><span /> Черновик сохраняется автоматически</span><span className="topbar-divider" /><span className="topbar-format">{printFormat.label} · горизонтально</span></div>
@@ -809,7 +809,7 @@ export default function Home() {
 
       <style>{`@page { size: ${paperSize}; margin: 0; }
         @media print { :root { --paper-width: ${printFormat.width}mm; --paper-height: ${printFormat.height}mm; } }`}</style>
-      <div className="print-root" aria-hidden="true">
+      <div className="print-root ym-hide-content" aria-hidden="true">
         <div className="print-page"><BookCard book={book} kind="cover" /></div>
         <div className="print-page"><BookCard book={book} kind="rules" /></div>
         {Array.from({ length: book.count }, (_, index) => <div className="print-page" key={index}><BookCard book={book} kind="wish" wishIndex={index} /></div>)}

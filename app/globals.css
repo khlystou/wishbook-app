@@ -268,7 +268,8 @@ button:disabled{cursor:not-allowed;opacity:.45}
   gap: 8px 20px;
   font-size: 13px;
 }
-.site-footer a { color: var(--ink); text-underline-offset: 3px; }
+.site-footer a { margin-inline-start: auto; color: var(--ink); text-underline-offset: 3px; }
+.site-footer a svg { vertical-align: -.15em; }
 .site-footer small { flex-basis: 100%; font-size: 12px; line-height: 1.5; }
 @media print {
   .site-content { min-height: 0; }
