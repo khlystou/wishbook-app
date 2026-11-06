@@ -1,5 +1,7 @@
 "use client";
 
+import SiteFooter from "./site-footer";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowLeft,
@@ -462,6 +464,7 @@ function ProjectLanding({ onStart }: { onStart: () => void }) {
     setSlide((current) => (current + offset + PROMO_SLIDES.length) % PROMO_SLIDES.length);
 
   return (
+    <>
     <main className="project-landing">
       <header className="landing-header">
         <div className="brand">
@@ -506,6 +509,8 @@ function ProjectLanding({ onStart }: { onStart: () => void }) {
         </section>
       </div>
     </main>
+    <SiteFooter />
+    </>
   );
 }
 
@@ -641,6 +646,7 @@ export default function Home() {
         </header>
 
         <div className="workspace">
+          <div className="sidebar-column">
           <aside className={`sidebar ${showMenu ? "sidebar--open" : ""}`}>
             <div className="sidebar-heading"><span>Ваш проект</span><button className="sidebar-close" type="button" onClick={() => setShowMenu(false)} aria-label="Закрыть"><X size={18} /></button></div>
             <div className="sidebar-project">{book.title || "Без названия"}<small>{book.count} {book.count === 1 ? "желание" : book.count >= 2 && book.count <= 4 ? "желания" : "желаний"}</small></div>
@@ -667,7 +673,9 @@ export default function Home() {
               </button>}
             </nav>
           </aside>
+          </div>
 
+          <div className="editor-column">
           <main className="main-area">
             <div className="page-intro">
               <div><div className="eyebrow">СТУДИЯ ПЕЧАТНЫХ ПОДАРКОВ</div><h1>{sectionTitle}</h1><p>{currentStep === 0 ? "Укажите параметры проекта и оформление всей книжки." : currentStep === 1 ? "Настройте первую карточку — она задаст настроение всей книжке." : currentStep === 2 ? "Напишите правила, которые будут напечатаны на отдельной карточке." : isWishStep ? "Напишите желание и выберите оформление чека." : "Проверьте все карточки и отправьте книжку на печать."}</p></div>
@@ -794,6 +802,8 @@ export default function Home() {
             </div>
             {currentStep === finalStep && <div className="all-pages"><h2>Все страницы <span>{previewItems.length}</span></h2><div className="all-pages-grid">{previewItems.map((kind, index) => <button type="button" className="page-thumb" key={index} onClick={() => { setSelectedPreview(index); window.scrollTo({ top: 0, behavior: "smooth" }); }}><BookCard book={book} kind={kind} wishIndex={Math.max(0, index - 2)} /><span>{index === 0 ? "Обложка" : index === 1 ? "Правила" : `Желание ${index - 1}`}</span><ChevronRight size={15} /></button>)}</div></div>}
           </main>
+          <SiteFooter />
+          </div>
         </div>
       </div>
 
